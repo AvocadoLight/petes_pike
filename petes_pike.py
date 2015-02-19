@@ -154,10 +154,6 @@ class Game(object):
         log.debug('State history:')
         log.debug(self.states)
 
-        # All or just one solution
-        if first and self.solutions:
-            return
-
         # Prune loop branches
         if state in self.states:
             log.debug('Loop detected. Prunning...')
@@ -173,6 +169,10 @@ class Game(object):
         # Tree traversal : Amplitude
         for puller in self.totems:
             for pulled in self.totems:
+
+                # All or just one solution
+                if first and self.solutions:
+                    return
 
                 # Ignore same
                 if puller == pulled:
