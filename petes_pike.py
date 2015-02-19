@@ -225,6 +225,8 @@ class Game(object):
                 totem = name
                 moves = [move]
 
+            formatted.append('{}-{}'.format(totem, ''.join(moves)))
+
             return ', '.join(formatted)
         return [
             fsolution(s) for s in sorted(self.solutions, key=lambda e: len(e))
@@ -327,6 +329,7 @@ if __name__ == '__main__':
 
     g.play(first=args.first)
     print('*** SOLUTIONS ***')
+    log.debug(g.solutions)
     for i, s in enumerate(g.get_solutions()):
         print('SOLUTION {}::'.format(i + 1))
         print('    {}'.format(s))
