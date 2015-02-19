@@ -4,6 +4,7 @@ ThinkFun Pete's Pike Game Solver
 This program allows to solve any Pete's Pike game. Pete's Pike is a nice board
 game created by Thinkfun.
 
+
 Features
 --------
 
@@ -50,9 +51,9 @@ For example:
    $ ./petes_pike.py -g games/24.json
    *** SOLUTIONS ***
    SOLUTION 1::
-       B-D, E-L, C-URD, B-L
+       B-D, E-L, C-URD, B-L, X-D
    SOLUTION 2::
-       A-D, C-R, E-ULD, A-R
+       A-D, C-R, E-ULD, A-R, X-D
 
 
 License
