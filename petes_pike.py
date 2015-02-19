@@ -147,7 +147,6 @@ class Game(object):
         Play current state of the board.
         """
 
-        # Prune loop branches
         state = self.get_state()
 
         log.debug('Currently at state:')
@@ -155,6 +154,11 @@ class Game(object):
         log.debug('State history:')
         log.debug(self.states)
 
+        # All or just one solution
+        if first and self.solutions:
+            return
+
+        # Prune loop branches
         if state in self.states:
             log.debug('Loop detected. Prunning...')
             return
@@ -169,10 +173,6 @@ class Game(object):
         # Tree traversal : Amplitude
         for puller in self.totems:
             for pulled in self.totems:
-
-                # All or just one solution
-                if first and self.solutions:
-                    return
 
                 # Ignore same
                 if puller == pulled:
@@ -193,7 +193,7 @@ class Game(object):
                         puller, pulled, future
                     ))
                     pulled.set_position(future)
-                    self.play()
+                    self.play(first)
 
                     # Backtrack
                     self.breadcrumbs.pop()
